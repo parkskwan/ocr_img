@@ -190,7 +190,7 @@ mnist.load_weights(hdf5_file)
 
 
 # 이미지 읽어 들이기
-im = cv2.imread('./photo/numbers.jpg')
+im = cv2.imread('./photo/numbers100.jpg')
 
 # 윤곽 추출하기
 # Gray 스케일로 변환하기
@@ -201,7 +201,7 @@ blur = cv2.GaussianBlur(gray, (5, 5), 0)
 # 2진화
 thresh = cv2.adaptiveThreshold(blur, 255, 1, 1, 11, 2)
 
-cv2.imwrite("./photo/numbers-th.png", thresh)
+cv2.imwrite("./photo/numbers100-th.png", thresh)
 contours = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[1]
 
 # 추출한 좌표 정렬하기
