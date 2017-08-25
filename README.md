@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
 # 이미지 읽어 들이기
-im = cv2.imread('./photo/numbers.png')
+im = cv2.imread('./photo/numbers100.jpg')
 
 plt.imshow(im); plt.show()
 
@@ -41,7 +41,7 @@ for cnt in contours:
 
 cv2.imwrite('numbers-contour.png', im) 
 
-image = mpimg.imread("numbers-contour.png")
+image = mpimg.imread("numbers100-contour.png")
 plt.imshow(image); plt.show()
 ```
 
