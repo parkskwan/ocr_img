@@ -41,7 +41,7 @@ for cnt in contours:
   red = (0, 0, 255)
   cv2.rectangle(im, (x, y), (x+w, y+h), red, 2)
 
-cv2.imwrite('numbers-contour.png', im) 
+cv2.imwrite('numbers100-contour.png', im) 
 
 image = mpimg.imread("numbers100-contour.png")
 plt.imshow(image); plt.show()
