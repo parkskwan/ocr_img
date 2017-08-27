@@ -357,6 +357,40 @@ print("정답률 : ", correct / len(nlist))
 
 ```python
 
+
+# number of convolutional filters to use
+
+nfilters = 32; opt = ['adam','rmsprop', 'adadelta']; nb_class = 10
+
+#MLP 모델 구축
+def build_model():
+
+    # 모델 구조 정의하기
+
+    model = Sequential()
+
+    model.add(Conv2D(nfilters, (3, 3), padding="same", input_shape = (28, 28, 1))) # input_shape = (28, 28, 1) MNIST의 크기 ( 28 X 28 ) 와 그레이 (= 1)  
+    model.add(Activation('relu'))
+    model.add(Conv2D(nfilters, (3, 3)))
+    model.add(Activation('relu'))
+    model.add(MaxPooling2D(pool_size=(2,2)))
+    model.add(Dropout(0.25))
+
+    model.add(Flatten())
+    model.add(Dense(128))
+    model.add(Activation('relu'))
+    model.add(Dropout(0.5))
+    model.add(Dense(nb_classes))
+    model.add(Activation('softmax'))
+
+    # 모델 구축하기
+    model.compile(loss='categorical_crossentropy', optimizer=opt[1], metrics=['accuracy'])
+
+    return model
+
+
+실행 결과 :
+
 [NG] 50 번째 1  !=  0 [  0 100   0   0   0   0   0   0   0   0]
 [NG] 51 번째 0  !=  5 [100   0   0   0   0   0   0   0   0   0]
 [NG] 52 번째 5  !=  8 [  0   0   0   0   0 100   0   0   0   0]
